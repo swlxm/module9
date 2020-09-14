@@ -103,6 +103,7 @@
               <!--suppress UnresolvedMavenProperty -->
               <suiteXmlFile>${testngXmlFile}</suiteXmlFile>
             </suiteXmlFiles>
+            <reportsDirectory>report</reportsDirectory>
           </configuration>
         </plugin>
         <plugin>
