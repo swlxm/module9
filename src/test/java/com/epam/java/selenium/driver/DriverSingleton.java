@@ -16,7 +16,6 @@ public class DriverSingleton {
     private static WebDriver driver;
     private DriverSingleton() {}
 
-    @Parameters({"env", "browser"})
     public static WebDriver getDriver(String env, String browser) throws IOException {
         if(null == driver) {
             Properties envProp = new Properties();

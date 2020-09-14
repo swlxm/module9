@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -19,12 +20,13 @@ public class BaseTest {
     public static String password = null;
 
     @BeforeClass
-    public void init() throws IOException {
-        Properties env = new Properties();
-        env.load(this.getClass().getResourceAsStream("/qa.properties"));
-        username = env.getProperty("username");
-        password = env.getProperty("password");
-        driver = DriverSingleton.getDriver();
+    @Parameters({"env", "browser"})
+    public void init(String env, String browser) throws IOException {
+        Properties envProp = new Properties();
+        envProp.load(this.getClass().getResourceAsStream("/" + env + ".properties"));
+        username = envProp.getProperty("username");
+        password = envProp.getProperty("password");
+        driver = DriverSingleton.getDriver(env, browser);
         driver.get("http://mail.google.com");
     }
 
