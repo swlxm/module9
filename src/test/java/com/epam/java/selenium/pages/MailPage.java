@@ -1,7 +1,6 @@
 package com.epam.java.selenium.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,19 +28,15 @@ public abstract class MailPage {
         return text;
     }
 
-    abstract public void sendMail(WebElement element) throws InterruptedException;
-
     public void deleteMail(WebElement element) throws InterruptedException {
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
         action.contextClick(element).perform();
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
 //        action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
         driver.findElement(deleteBy).click();
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
     }
-
-    abstract public void discardMail(WebElement element) throws InterruptedException;
 
 //    public static MailPage getInstance(Enum page) {
 //        if(page.name().equals("INBOX"))

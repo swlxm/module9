@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.epam.java.selenium</groupId>
-  <artifactId>module7</artifactId>
+  <artifactId>module9</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>module7</name>
@@ -56,7 +56,21 @@
       <artifactId>selenide</artifactId>
       <version>5.14.2</version>
       <scope>test</scope>
-    </dependency>  </dependencies>
+    </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>4.2.0</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.uncommons/reportng -->
+    <dependency>
+      <groupId>org.uncommons</groupId>
+      <artifactId>reportng</artifactId>
+      <version>1.1.4</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -78,6 +92,18 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration>
+            <systemPropertyVariables>
+              <!--suppress UnresolvedMavenProperty -->
+              <testEnvironment>${env}</testEnvironment>
+              <!--suppress UnresolvedMavenProperty -->
+              <testEnvironment>${browser}</testEnvironment>
+            </systemPropertyVariables>
+            <suiteXmlFiles>
+              <!--suppress UnresolvedMavenProperty -->
+              <suiteXmlFile>${testngXmlFile}</suiteXmlFile>
+            </suiteXmlFiles>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -102,5 +128,23 @@
         </plugin>
       </plugins>
     </pluginManagement>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>8</source>
+                  <target>8</target>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>all-test</id>
+      <properties>
+        <testngXmlFile>src/test/resources/testsuite.xml</testngXmlFile>
+      </properties>
+    </profile>
+  </profiles>
 </project>

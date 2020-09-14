@@ -53,7 +53,7 @@ public class NewMailSelenideTest {
         mailRecords.get(0).should(Condition.matchesText(subject));
         $(By.xpath("//a[@href='https://accounts.google.com/SignOutOptions?hl=en&continue=https://mail.google.com/mail&service=mail']")).click();
         $(By.linkText("Sign out")).click();
-        $(By.xpath("//span[text()='Choose an account']")).waitUntil(Condition.visible, 60*1000);
+//        $(By.xpath("//span[text()='Choose an account']")).waitUntil(Condition.visible, 60*1000);
     }
 
 }

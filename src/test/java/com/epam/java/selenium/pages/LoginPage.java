@@ -1,5 +1,6 @@
 package com.epam.java.selenium.pages;
 
+import com.epam.java.selenium.entities.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,16 +20,15 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public HomePage login(String username, String password) throws InterruptedException {
-        driver.findElement(usernameBy).sendKeys(username);
+    public HomePage login(User user) throws InterruptedException {
+        driver.findElement(usernameBy).sendKeys(user.getUsername());
         driver.findElement(idNextBtnBy).click();
         WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.elementToBeClickable(passwordBy));
-        driver.findElement(passwordBy).click();
-        driver.findElement(passwordBy).sendKeys(password);
+        driver.findElement(passwordBy).sendKeys(user.getPassword());
         driver.findElement(pwdNextBtnBy).click();
         wait.until(ExpectedConditions.elementToBeClickable(composeBy));
-        Thread.sleep(1000*2);
+//        Thread.sleep(1000*2);
         return new HomePage(driver);
     }
 }
