@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,7 +62,7 @@ public class ListenerImpl implements ITestListener {
 
     private void saveScreenshot() {
         try {
-            File screen = ((TakesScreenshot)DriverSingleton.getDriver()).getScreenshotAs(OutputType.FILE);
+            File screen = ((TakesScreenshot)DriverSingleton.getDriver("", "")).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screen, new File(".//target/screenshots/" + getTimestamp() + ".png"));
         } catch (IOException e) {
             logger.error("Failed to take screen shot: " + e.getLocalizedMessage());
