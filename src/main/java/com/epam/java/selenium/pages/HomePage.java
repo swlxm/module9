@@ -24,25 +24,25 @@ public class HomePage {
 
     public void createDraftMail(Email email) throws InterruptedException {
         driver.findElement(composeBy).click();
-//        Thread.sleep(3000);
+        Thread.sleep(3000);
         WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.elementToBeClickable(toBy));
         driver.findElement(toBy).sendKeys(email.getTo());
         driver.findElement(subjectBy).sendKeys(email.getSubject());
         driver.findElement(bodyBy).sendKeys(email.getBody());
         driver.findElement(closeBtnBy).click();
-//        Thread.sleep(1000);
+        Thread.sleep(1000);
     }
 
     public DraftMailPage getDraftMailPage() throws InterruptedException {
         driver.findElement(draftBy).click();
-//        Thread.sleep(10*1000);
+        Thread.sleep(10*1000);
         return new DraftMailPage(driver);
     }
 
     public SentMailPage getSentMailPage() throws InterruptedException {
         driver.findElement(sentBy).click();
-//        Thread.sleep(10*1000);
+        Thread.sleep(10*1000);
         return new SentMailPage(driver);
     }
 

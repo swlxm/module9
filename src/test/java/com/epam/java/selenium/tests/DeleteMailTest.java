@@ -1,4 +1,4 @@
-package com.epam.java.selenium;
+package com.epam.java.selenium.tests;
 
 import com.epam.java.selenium.pages.HomePage;
 import com.epam.java.selenium.pages.MailPage;

@@ -1,4 +1,4 @@
-package com.epam.java.selenium;
+package com.epam.java.selenium.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

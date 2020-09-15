@@ -15,7 +15,7 @@ public class DraftMailPage extends MailPage {
     public void sendMail(WebElement element) throws InterruptedException {
         element.click();
         driver.findElement(sendBy).click();
-//        Thread.sleep(10*1000);
+        Thread.sleep(10*1000);
 
     }
 
@@ -24,7 +24,7 @@ public class DraftMailPage extends MailPage {
         action.moveToElement(element).perform();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         action.contextClick(element).perform();
-//        Thread.sleep(1000);
+        Thread.sleep(1000);
         WebElement discardBtn = driver.findElement(discardBy);
         js.executeScript("discardBtn = arguments[0];" +
                 "original_style = discardBtn.getAttribute('style');" +
@@ -32,7 +32,7 @@ public class DraftMailPage extends MailPage {
                 " border: 2px solid red;\");" +
                 "setTimeout(function(){discardBtn.setAttribute('style', original_style);}, 3000);", discardBtn);
         action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
-//        Thread.sleep(1000);
+        Thread.sleep(1000);
     }
 
 }

@@ -1,8 +1,9 @@
-package com.epam.java.selenium;
+package com.epam.java.selenium.tests;
 
 import com.epam.java.selenium.entities.Email;
 import com.epam.java.selenium.pages.DraftMailPage;
 import com.epam.java.selenium.pages.HomePage;
+import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 

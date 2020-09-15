@@ -28,7 +28,7 @@ public class LoginPage {
         driver.findElement(passwordBy).sendKeys(user.getPassword());
         driver.findElement(pwdNextBtnBy).click();
         wait.until(ExpectedConditions.elementToBeClickable(composeBy));
-//        Thread.sleep(1000*2);
+        Thread.sleep(1000*2);
         return new HomePage(driver);
     }
 }

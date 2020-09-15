@@ -1,4 +1,4 @@
-package com.epam.java.selenium;
+package com.epam.java.selenium.tests;
 
 import com.epam.java.selenium.driver.DriverSingleton;
 import com.epam.java.selenium.entities.User;
@@ -41,7 +41,7 @@ public class BaseTest {
 
     public void logout() throws InterruptedException {
         driver.findElement(By.xpath("//a[@href='https://accounts.google.com/SignOutOptions?hl=en&continue=https://mail.google.com/mail&service=mail']")).click();
-//        Thread.sleep(2*1000);
+        Thread.sleep(2*1000);
         driver.findElement(By.linkText("Sign out")).click();
 //        WebDriverWait wait = new WebDriverWait(driver, 60);
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Choose an account']")));

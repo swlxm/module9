@@ -1,17 +1,9 @@
-package com.epam.java.selenium;
+package com.epam.java.selenium.tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.epam.java.selenium.pages.HomePage;
-import com.epam.java.selenium.pages.LoginPage;
-import com.epam.java.selenium.pages.MailPage;
+import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;

@@ -6,11 +6,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.Parameters;
 
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * @author Samuel_Shen
+ */
 public class DriverSingleton {
 
     private static WebDriver driver;
