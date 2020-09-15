@@ -22,7 +22,7 @@ public class LoginPage {
 
     public HomePage login(User user) throws InterruptedException {
         driver.findElement(usernameBy).sendKeys(user.getUsername());
-//        driver.findElement(idNextBtnBy).click();
+        driver.findElement(idNextBtnBy).click();
         WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.elementToBeClickable(passwordBy));
         driver.findElement(passwordBy).sendKeys(user.getPassword());
