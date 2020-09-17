@@ -2,12 +2,12 @@ package com.epam.java.selenium.entities;
 
 public class User {
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -18,6 +18,6 @@ public class User {
         this.password = password;
     }
 
-    private String username = null;
+    private String email = null;
     private String password = null;
 }

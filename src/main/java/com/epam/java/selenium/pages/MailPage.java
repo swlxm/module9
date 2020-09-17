@@ -1,43 +1,35 @@
 package com.epam.java.selenium.pages;
 
-import org.openqa.selenium.By;
+import com.epam.java.selenium.elements.Mail;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
+import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementLocatorFactory;
 
 import java.util.List;
 
 public abstract class MailPage {
 
     protected static WebDriver driver;
-
-    private By mailListBy = By.xpath("//div[@role='main']//table[@role='grid'][1]//tr");
-    private By deleteBy = By.xpath("//div[@aria-label='Delete']");
+    private Mail mail;
 
     public MailPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(new HtmlElementDecorator(new HtmlElementLocatorFactory(driver)), this);
     }
 
-    public WebElement getLatestMail() {
-        List<WebElement> mailRecords = driver.findElements(mailListBy);
-        return mailRecords.get(0);
+    public List<WebElement> getLatestMail() {
+        return mail.getLatestMail();
     }
 
-    public String getMailText(WebElement element) {
-        String text = element.getText();
-        return text;
+    public String getMailText(List<WebElement> elements) {
+        return mail.getMailText(elements);
     }
 
-    public void deleteMail(WebElement element) throws InterruptedException {
-        Actions action = new Actions(driver);
-        action.moveToElement(element).perform();
-        action.contextClick(element).perform();
-        Thread.sleep(1000);
-//        action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
-        driver.findElement(deleteBy).click();
-        Thread.sleep(1000);
+    public void deleteMail(List<WebElement> elements) throws InterruptedException {
+        mail.deleteMail(driver, elements);
     }
-
 //    public static MailPage getInstance(Enum page) {
 //        if(page.name().equals("INBOX"))
 //            return new InboxMailPage(driver);

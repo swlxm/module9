@@ -7,6 +7,8 @@ import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import static org.testng.Assert.*;
 
 public class DiscardMailTest extends BaseTest {
@@ -25,14 +27,14 @@ public class DiscardMailTest extends BaseTest {
         email.setTo("samuel_shen@epam.com");
         homePage.createDraftMail(email);
         draftMailPage = homePage.getDraftMailPage();
-        WebElement mail = draftMailPage.getLatestMail();
+        List<WebElement> mail = draftMailPage.getLatestMail();
         String text = draftMailPage.getMailText(mail);
         assertEquals(text.split("\n")[1], subject);
     }
 
     @Test(dependsOnMethods = {"newDraftMail"})
     public void discardMail() throws InterruptedException {
-        WebElement mail = draftMailPage.getLatestMail();
+        List<WebElement> mail = draftMailPage.getLatestMail();
         String text = draftMailPage.getMailText(mail);
         String subject = text.split("\n")[1];
         draftMailPage.discardMail(mail);

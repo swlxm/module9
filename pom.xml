@@ -62,6 +62,11 @@
       <version>1.1.4</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>ru.yandex.qatools.htmlelements</groupId>
+      <artifactId>htmlelements-all</artifactId>
+      <version>1.20.0</version>
+    </dependency>
   </dependencies>
 
   <build>

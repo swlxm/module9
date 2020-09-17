@@ -5,6 +5,9 @@ import com.epam.java.selenium.pages.*;
 import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
+import java.util.List;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -23,7 +26,7 @@ public class NewMailTest extends BaseTest {
         email.setTo("samuel_shen@epam.com");
         homePage.createDraftMail(email);
         DraftMailPage draftMailPage = homePage.getDraftMailPage();
-        WebElement mail = draftMailPage.getLatestMail();
+        List<WebElement> mail = draftMailPage.getLatestMail();
         String text = draftMailPage.getMailText(mail);
         assertTrue(text.contains(subject));
         draftMailPage.sendMail(mail);

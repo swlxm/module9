@@ -1,29 +1,29 @@
 package com.epam.java.selenium.pages;
 
+import com.epam.java.selenium.elements.Mail;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.List;
+
 public class DraftMailPage extends MailPage {
 
-    private By sendBy = By.xpath("//div[text()='Send']");
-    private By discardBy = By.xpath("//div[text()='Discard drafts']");
+    private Mail mail;
 
     public DraftMailPage(WebDriver driver) {
         super(driver);
     }
 
-    public void sendMail(WebElement element) throws InterruptedException {
-        element.click();
-        driver.findElement(sendBy).click();
-        Thread.sleep(10*1000);
-
+    public void sendMail(List<WebElement> element) throws InterruptedException {
+        mail.sendMail(element);
     }
 
-    public void discardMail(WebElement element) throws InterruptedException {
+    public void discardMail(List<WebElement> element) throws InterruptedException {
+        By discardBy = By.xpath("//div[text()='Discard drafts']");
         Actions action = new Actions(driver);
-        action.moveToElement(element).perform();
+        action.moveToElement(element.get(0)).perform();
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        action.contextClick(element).perform();
+        action.contextClick(element.get(0)).perform();
         Thread.sleep(1000);
         WebElement discardBtn = driver.findElement(discardBy);
         js.executeScript("discardBtn = arguments[0];" +
