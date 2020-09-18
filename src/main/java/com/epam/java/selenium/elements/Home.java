@@ -6,10 +6,13 @@ import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.annotations.Timeout;
 import ru.yandex.qatools.htmlelements.element.*;
 
+@Name("Main Page")
+@FindBy(xpath = "//body")
 public class Home extends HtmlElement {
 
     @Name("Compose button")
     @FindBy(xpath = "//div[text()='Compose']")
+    @Timeout(60)
     private Button composeBtn;
 
     @Name("To input box")

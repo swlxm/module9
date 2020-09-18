@@ -11,10 +11,12 @@ import ru.yandex.qatools.htmlelements.element.Table;
 
 import java.util.List;
 
+@Name("Main Page")
+@FindBy(xpath = "//body")
 public class Mail extends HtmlElement {
 
     @Name("Mail table")
-    @FindBy(xpath = "//div[@role='main']//table[@role='grid'][1]")
+    @FindBy(xpath = "//table[@role='grid']")
     private Table mailTable;
 
     @Name("Delete button")

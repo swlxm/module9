@@ -38,10 +38,11 @@ public class Login extends HtmlElement {
         idNextBtn.click();
 //        WebDriverWait wait = new WebDriverWait(driver, 60);
 //        wait.until(ExpectedConditions.elementToBeClickable(passwordBy));
+        Thread.sleep(1000*5);
         password.sendKeys(user.getPassword());
         pwdNextBtn.click();
 //        wait.until(ExpectedConditions.elementToBeClickable(composeBy));
-        Thread.sleep(1000*2);
+        Thread.sleep(1000*5);
 
     }
 }
