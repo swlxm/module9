@@ -1,7 +1,6 @@
 package com.epam.java.selenium.tests;
 
-import com.epam.java.selenium.pages.HomePage;
-import com.epam.java.selenium.pages.MailPage;
+import com.epam.java.selenium.pages.*;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -14,7 +13,8 @@ public class DeleteMailTest extends BaseTest {
     @Test
     public void deleteMail() throws InterruptedException {
         homePage = login();
-        MailPage mailMainPage = homePage.getSentMailPage();
+        Factory sentMailPageFactory = new SentMailPageFactory();
+        MailPage mailMainPage = sentMailPageFactory.getMailPage(driver);
         WebElement mail = mailMainPage.getLatestMail();
         String text = mailMainPage.getMailText(mail);
         String subject = text.split("\n")[2];

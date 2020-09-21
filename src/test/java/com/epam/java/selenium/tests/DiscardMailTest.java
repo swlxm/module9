@@ -2,6 +2,8 @@ package com.epam.java.selenium.tests;
 
 import com.epam.java.selenium.entities.Email;
 import com.epam.java.selenium.pages.DraftMailPage;
+import com.epam.java.selenium.pages.DraftMailPageFactory;
+import com.epam.java.selenium.pages.Factory;
 import com.epam.java.selenium.pages.HomePage;
 import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
@@ -24,7 +26,8 @@ public class DiscardMailTest extends BaseTest {
         email.setSubject(subject);
         email.setTo("samuel_shen@epam.com");
         homePage.createDraftMail(email);
-        draftMailPage = homePage.getDraftMailPage();
+        Factory draftMailPageFactory = new DraftMailPageFactory();
+        draftMailPage = (DraftMailPage) draftMailPageFactory.getMailPage(driver);
         WebElement mail = draftMailPage.getLatestMail();
         String text = draftMailPage.getMailText(mail);
         assertEquals(text.split("\n")[1], subject);

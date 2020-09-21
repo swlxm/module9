@@ -15,8 +15,8 @@ public class HomePage {
     private By subjectBy = By.name("subjectbox");
     private By bodyBy = By.xpath("//div[@aria-label='Message Body']");
     private By closeBtnBy = By.xpath("//img[@alt='Close']");
-    private By draftBy = By.linkText("Drafts");
-    private By sentBy = By.linkText("Sent");
+//    private By draftBy = By.linkText("Drafts");
+//    private By sentBy = By.linkText("Sent");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -34,16 +34,16 @@ public class HomePage {
         Thread.sleep(1000);
     }
 
-    public DraftMailPage getDraftMailPage() throws InterruptedException {
-        driver.findElement(draftBy).click();
-        Thread.sleep(10*1000);
-        return new DraftMailPage(driver);
-    }
+//    public DraftMailPage getDraftMailPage() throws InterruptedException {
+//        driver.findElement(draftBy).click();
+//        Thread.sleep(10*1000);
+//        return new DraftMailPage(driver);
+//    }
 
-    public SentMailPage getSentMailPage() throws InterruptedException {
-        driver.findElement(sentBy).click();
-        Thread.sleep(10*1000);
-        return new SentMailPage(driver);
-    }
+//    public SentMailPage getSentMailPage() throws InterruptedException {
+//        driver.findElement(sentBy).click();
+//        Thread.sleep(10*1000);
+//        return new SentMailPage(driver);
+//    }
 
 }

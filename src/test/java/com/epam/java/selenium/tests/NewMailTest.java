@@ -22,12 +22,14 @@ public class NewMailTest extends BaseTest {
         email.setSubject(subject);
         email.setTo("samuel_shen@epam.com");
         homePage.createDraftMail(email);
-        DraftMailPage draftMailPage = homePage.getDraftMailPage();
+        Factory draftMailPageFactory = new DraftMailPageFactory();
+        DraftMailPage draftMailPage = (DraftMailPage) draftMailPageFactory.getMailPage(driver);
         WebElement mail = draftMailPage.getLatestMail();
         String text = draftMailPage.getMailText(mail);
         assertTrue(text.contains(subject));
         draftMailPage.sendMail(mail);
-        SentMailPage sentMailPage = homePage.getSentMailPage();
+        Factory sentMailPageFactory = new SentMailPageFactory();
+        SentMailPage sentMailPage = (SentMailPage) sentMailPageFactory.getMailPage(driver);
         mail = sentMailPage.getLatestMail();
         text = sentMailPage.getMailText(mail);
         assertEquals(text.split("\n")[2], subject);
