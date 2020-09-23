@@ -3,7 +3,6 @@ package com.epam.java.selenium.tests;
 import com.epam.java.selenium.entities.Email;
 import com.epam.java.selenium.entities.EmailBuilder;
 import com.epam.java.selenium.pages.DraftMailPage;
-import com.epam.java.selenium.pages.factory.Factory;
 import com.epam.java.selenium.pages.HomePage;
 import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
@@ -20,10 +19,7 @@ public class DiscardMailTest extends BaseTest {
     public void discardMail() throws InterruptedException {
         String subject = utils.genTimestamp();
         homePage = login();
-        Email email = new EmailBuilder().setBody("send by selenium").setTo("module7.epam@gmail.com").setSubject(subject).createEmail();
-//        email.setBody("send by selenium");
-//        email.setSubject(subject);
-//        email.setTo("module7.epam@gmail.com");
+        Email email = new EmailBuilder().setBody("send by selenium").setTo("module7.epam@gmail.com").setSubject(subject).build();
         homePage.createDraftMail(email);
         DraftMailPage draftMailPage = homePage.openDraftMailPage(driver);
         WebElement mail = draftMailPage.getLatestMail();

@@ -19,12 +19,8 @@ public class NewMailTest extends BaseTest {
     public void newMail() throws InterruptedException {
         String subject = utils.genTimestamp();
         homePage = login();
-        Email email = new EmailBuilder().setBody("send by selenium").setTo("module7.epam@gmail.com").setSubject(subject).createEmail();
-//        email.setBody("send by selenium");
-//        email.setSubject(subject);
-//        email.setTo("module7.epam@gmail.com");
+        Email email = new EmailBuilder().setBody("send by selenium").setTo("module7.epam@gmail.com").setSubject(subject).build();
         homePage.createDraftMail(email);
-//        Factory draftMailPageFactory = new DraftMailPageFactory();
         DraftMailPage draftMailPage = homePage.openDraftMailPage(driver);
         WebElement mail = draftMailPage.getLatestMail();
         String text = draftMailPage.getMailText(mail);

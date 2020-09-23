@@ -2,7 +2,6 @@ package com.epam.java.selenium.pages.factory;
 
 import com.epam.java.selenium.pages.MailPage;
 import com.epam.java.selenium.pages.SentMailPage;
-import com.epam.java.selenium.pages.factory.Factory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

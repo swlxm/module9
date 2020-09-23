@@ -10,7 +10,6 @@ import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class ReplyMailTest extends BaseTest {
@@ -23,10 +22,7 @@ public class ReplyMailTest extends BaseTest {
     public void replyMail() throws InterruptedException {
         subject = utils.genTimestamp();
         homePage = login();
-        Email email = new EmailBuilder().setBody("send by selenium").setTo("module7.epam@gmail.com").setSubject(subject).createEmail();
-//        email.setBody("send by selenium");
-//        email.setSubject(subject);
-//        email.setTo("module7.epam@gmail.com");
+        Email email = new EmailBuilder().setBody("send by selenium").setTo("module7.epam@gmail.com").setSubject(subject).build();
         homePage.sendMail(email);
         homePage.openInboxPage();
         MailPageDecorator inboxPage = new InboxMailPageDecorator(driver, new InboxMailPage(driver));

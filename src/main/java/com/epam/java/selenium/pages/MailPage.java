@@ -41,7 +41,6 @@ public abstract class MailPage {
         action.moveToElement(element).perform();
         action.contextClick(element).perform();
         Thread.sleep(1000);
-//        action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
         driver.findElement(deleteBy).click();
         Thread.sleep(1000);
     }
@@ -52,7 +51,6 @@ public abstract class MailPage {
         action.contextClick(element).perform();
         Thread.sleep(1000);
         action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
-//        driver.findElement(replyBy).click();
         Thread.sleep(1000);
         driver.findElement(bodyBy).sendKeys(body);
         driver.findElement(sendBy).click();

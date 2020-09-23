@@ -44,8 +44,6 @@ public class BaseTest {
         driver.findElement(By.xpath("//a[@href='https://accounts.google.com/SignOutOptions?hl=en&continue=https://mail.google.com/mail&service=mail']")).click();
         Thread.sleep(2*1000);
         driver.findElement(By.linkText("Sign out")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Choose an account']")));
     }
 
     @AfterClass

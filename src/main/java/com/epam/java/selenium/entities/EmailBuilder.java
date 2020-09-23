@@ -20,7 +20,7 @@ public class EmailBuilder {
         return this;
     }
 
-    public Email createEmail() {
+    public Email build() {
         return new Email(to, subject, body);
     }
 }
