@@ -5,6 +5,12 @@ public class Email {
     private String subject = null;
     private String to = null;
 
+    public Email(String to, String subject, String body) {
+        this.to = to;
+        this.subject = subject;
+        this.body = body;
+    }
+
     public String getSubject() {
         return subject;
     }

@@ -1,5 +1,6 @@
-package com.epam.java.selenium.pages;
+package com.epam.java.selenium.pages.factory;
 
+import com.epam.java.selenium.pages.MailPage;
 import org.openqa.selenium.WebDriver;
 
 public abstract class Factory {

@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * Home page after login, contains common methods, like composer, navigate to different pages
+ */
 public class HomePage {
 
     protected static WebDriver driver;
@@ -15,8 +18,10 @@ public class HomePage {
     private By subjectBy = By.name("subjectbox");
     private By bodyBy = By.xpath("//div[@aria-label='Message Body']");
     private By closeBtnBy = By.xpath("//img[@alt='Close']");
-//    private By draftBy = By.linkText("Drafts");
-//    private By sentBy = By.linkText("Sent");
+    private By inboxBy = By.linkText("Inbox");
+    private By sentBy = By.linkText("Sent");
+    private By draftBy = By.linkText("Drafts");
+    private By sendBy = By.xpath("//div[text()='Send']");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -34,16 +39,33 @@ public class HomePage {
         Thread.sleep(1000);
     }
 
-//    public DraftMailPage getDraftMailPage() throws InterruptedException {
-//        driver.findElement(draftBy).click();
-//        Thread.sleep(10*1000);
-//        return new DraftMailPage(driver);
-//    }
+    public void sendMail(Email email) throws InterruptedException {
+        driver.findElement(composeBy).click();
+        Thread.sleep(3000);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        wait.until(ExpectedConditions.elementToBeClickable(toBy));
+        driver.findElement(toBy).sendKeys(email.getTo());
+        driver.findElement(subjectBy).sendKeys(email.getSubject());
+        driver.findElement(bodyBy).sendKeys(email.getBody());
+        driver.findElement(sendBy).click();
+        Thread.sleep(1000*10);
+    }
 
-//    public SentMailPage getSentMailPage() throws InterruptedException {
-//        driver.findElement(sentBy).click();
-//        Thread.sleep(10*1000);
-//        return new SentMailPage(driver);
-//    }
+    public void openInboxPage() throws InterruptedException {
+        driver.findElement(inboxBy).click();
+        Thread.sleep(10*1000);
+
+    }
+
+    public void openSentMailPage() throws InterruptedException {
+        driver.findElement(sentBy).click();
+        Thread.sleep(10*1000);
+    }
+
+    public DraftMailPage openDraftMailPage(WebDriver driver) throws InterruptedException {
+        driver.findElement(draftBy).click();
+        Thread.sleep(10*1000);
+        return new DraftMailPage(driver);
+    }
 
 }

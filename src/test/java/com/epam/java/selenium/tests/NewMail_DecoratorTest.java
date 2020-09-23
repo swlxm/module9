@@ -3,14 +3,17 @@ package com.epam.java.selenium.tests;
 import com.epam.java.selenium.entities.Email;
 import com.epam.java.selenium.entities.EmailBuilder;
 import com.epam.java.selenium.pages.*;
+import com.epam.java.selenium.pages.decorator.MailPageDecorator;
+import com.epam.java.selenium.pages.decorator.SentMailPageDecorator;
 import com.epam.java.selenium.pages.factory.Factory;
-import com.epam.java.selenium.pages.factory.SentMailPageFactory;
 import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class NewMailTest extends BaseTest {
+public class NewMail_DecoratorTest extends BaseTest {
 
     private Utils utils = new Utils();
     private HomePage homePage;
@@ -22,19 +25,20 @@ public class NewMailTest extends BaseTest {
         Email email = new EmailBuilder().setBody("send by selenium").setTo("module7.epam@gmail.com").setSubject(subject).createEmail();
 //        email.setBody("send by selenium");
 //        email.setSubject(subject);
-//        email.setTo("module7.epam@gmail.com");
+//        email.setTo("samuel_shen@epam.com");
         homePage.createDraftMail(email);
-//        Factory draftMailPageFactory = new DraftMailPageFactory();
         DraftMailPage draftMailPage = homePage.openDraftMailPage(driver);
         WebElement mail = draftMailPage.getLatestMail();
         String text = draftMailPage.getMailText(mail);
         assertTrue(text.contains(subject));
         draftMailPage.sendMail(mail);
-        Factory sentMailPageFactory = new SentMailPageFactory();
-        MailPage sentMailPage = sentMailPageFactory.getMailPage(driver);
+//        Factory sentMailPageFactory = new SentMailPageFactory();
+//        SentMailPage sentMailPage = (SentMailPage) sentMailPageFactory.getMailPage(driver);
+        homePage.openSentMailPage();
+        MailPageDecorator sentMailPage = new SentMailPageDecorator(driver, new SentMailPage(driver));
         mail = sentMailPage.getLatestMail();
         text = sentMailPage.getMailText(mail);
-        assertTrue(text.contains(subject));
+        assertEquals(text.split("\n")[2], subject);
         logout();
     }
 
