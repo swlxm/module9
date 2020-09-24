@@ -19,10 +19,9 @@ public class DeleteMailTest extends BaseTest {
         MailPage sentMailPage = sentMailPageFactory.getMailPage(driver);
         WebElement mail = sentMailPage.getLatestMail();
         String text = sentMailPage.getMailText(mail);
-        String subject = text.split("\n")[2];
         sentMailPage.deleteMail(mail);
         mail = sentMailPage.getLatestMail();
-        assertNotEquals(sentMailPage.getMailText(mail).split("\n")[2], subject);
+        assertNotEquals(sentMailPage.getMailText(mail), text);
         logout();
     }
 }

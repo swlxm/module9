@@ -12,7 +12,7 @@ import java.util.List;
  * Basic class for different mail pages, inbox/sent/draft...
  * @author Samuel_Shen
  */
-public abstract class MailPage {
+public class MailPage {
 
     protected static WebDriver driver;
 

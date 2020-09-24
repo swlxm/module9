@@ -9,7 +9,6 @@ import com.epam.java.selenium.utils.Utils;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class NewMail_DecoratorTest extends BaseTest {
@@ -32,7 +31,7 @@ public class NewMail_DecoratorTest extends BaseTest {
         MailPageDecorator sentMailPage = new SentMailPageDecorator(driver, new SentMailPage(driver));
         mail = sentMailPage.getLatestMail();
         text = sentMailPage.getMailText(mail);
-        assertEquals(text.split("\n")[2], subject);
+        assertTrue(text.contains(subject));
         logout();
     }
 
